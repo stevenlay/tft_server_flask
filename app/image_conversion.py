@@ -34,4 +34,5 @@ def img_pipeline(url, streamer_name):
     image = increase_brightness(image)
     crop = crop_image(image, 22, 367, 786, 0).copy()
     cv2.imwrite('images/output_%s.jpg' %streamer_name,crop)
-    return image_to_string(crop, 'eng')
+    upsize = cv2.resize(crop, None, fx = 2, fy = 2, interpolation = cv2.INTER_CUBIC)
+    return image_to_string(upsize, 'eng')
